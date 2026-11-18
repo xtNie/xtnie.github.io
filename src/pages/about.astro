@@ -3,12 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import { site } from '../data/site';
 ---
 <Layout title="About" active="about">
-  <header class="page-header"><h1>About</h1></header>
-  <article class="prose">
-    <p>I am {site.name}, currently at the University of Chinese Academy of Sciences. Previously, I studied Intelligent Science and Technology at Shanghai University.</p>
-    <p>My interests include artificial intelligence and its applications in industrial settings.</p>
-    <p>Outside of my academic interests, I enjoy photography and music, and I am learning to play the bass.</p>
-    <h2>Contact</h2>
-    <p><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></p>
-  </article>
+  <header class="page-header"><p class="eyebrow">Profile & contact</p><h1>About</h1></header>
+  <div class="about-grid">
+    <article class="prose">
+      <p class="opening-paragraph">I am {site.name}, currently at the University of Chinese Academy of Sciences.</p>
+      <p>Previously, I studied Intelligent Science and Technology at Shanghai University. My interests include artificial intelligence and its applications in industrial settings.</p>
+      <p>Outside of my academic interests, I enjoy photography and music, and I am learning to play the bass.</p>
+    </article>
+    <aside class="profile-details" aria-label="Affiliations and contact">
+      <dl>
+        <div><dt>Current affiliation</dt><dd>{site.affiliation}</dd></div>
+        <div><dt>Previously</dt><dd>Shanghai University<br /><span>Intelligent Science and Technology</span></dd></div>
+        <div><dt>Contact</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a><br /><a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a></dd></div>
+      </dl>
+    </aside>
+  </div>
 </Layout>

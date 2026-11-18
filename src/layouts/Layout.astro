@@ -18,7 +18,7 @@ const links = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ? `${title} — ${site.name}` : site.title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#f5f3ee" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
     <meta property="og:title" content={title || site.title} />
@@ -35,7 +35,7 @@ const links = [
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="wordmark" href={url()} aria-label={`${site.name} — home`}>{site.name}</a>
+        <a class="wordmark" href={url()} aria-label={`${site.name} — home`}><span class="wordmark-symbol" aria-hidden="true">xn.</span><span>{site.name}</span></a>
         <nav class="main-nav" aria-label="Main navigation">
           {links.map(link => <a href={url(link.path)} aria-current={active === link.key ? 'page' : undefined}>{link.label}</a>)}
         </nav>
@@ -44,7 +44,7 @@ const links = [
     <main id="main" class:list={{ wide }}><slot /></main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>© {new Date().getFullYear()} {site.name}</span>
+        <div class="footer-signature"><a href={url()}>{site.name}</a><span>© {new Date().getFullYear()}</span></div>
         <div class="footer-links">
           <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>
           <a href={`mailto:${site.email}`}>Email</a>
@@ -60,7 +60,7 @@ const links = [
           theme.textContent = dark ? 'Light appearance' : 'Dark appearance';
           theme.setAttribute('aria-label', dark ? 'Switch to light appearance' : 'Switch to dark appearance');
         }
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#161617' : '#ffffff');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191e1b' : '#f5f3ee');
       }
       updateThemeLabel();
       theme?.addEventListener('click', () => {
