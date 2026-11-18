@@ -18,7 +18,7 @@ const links = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ? `${title} — ${site.name}` : site.title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f5f3ee" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
     <meta property="og:title" content={title || site.title} />
@@ -27,48 +27,19 @@ const links = [
     <meta property="og:url" content={canonical} />
     <meta name="author" content={site.name} />
     <slot name="head" />
-    <script is:inline>
-      try { document.documentElement.dataset.theme = localStorage.getItem('photo-theme') || 'light'; } catch {}
-    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="wordmark" href={url()} aria-label={`${site.name} — home`}><span class="wordmark-symbol" aria-hidden="true">xn.</span><span>{site.name}</span></a>
-        <nav class="main-nav" aria-label="Main navigation">
-          {links.map(link => <a href={url(link.path)} aria-current={active === link.key ? 'page' : undefined}>{link.label}</a>)}
-        </nav>
-      </div>
+    <header class:list={['site-header', { wide }]}>
+      <a class="wordmark" href={url()} aria-label="Sutton — home">Sutton</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        {links.map(link => <a href={url(link.path)} aria-current={active === link.key ? 'page' : undefined}>{link.label}</a>)}
+      </nav>
     </header>
     <main id="main" class:list={{ wide }}><slot /></main>
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-signature"><a href={url()}>{site.name}</a><span>© {new Date().getFullYear()}</span></div>
-        <div class="footer-links">
-          <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={`mailto:${site.email}`}>Email</a>
-          <button id="theme-toggle" aria-label="Switch to dark appearance">Dark appearance</button>
-        </div>
-      </div>
+    <footer class:list={['site-footer', { wide }]}>
+      <span>© {new Date().getFullYear()} {site.name}</span>
+      <div class="footer-links"><a href={`mailto:${site.email}`}>Email</a><a href={site.github} target="_blank" rel="noreferrer">GitHub</a></div>
     </footer>
-    <script>
-      const theme = document.querySelector<HTMLButtonElement>('#theme-toggle');
-      function updateThemeLabel() {
-        const dark = document.documentElement.dataset.theme === 'dark';
-        if (theme) {
-          theme.textContent = dark ? 'Light appearance' : 'Dark appearance';
-          theme.setAttribute('aria-label', dark ? 'Switch to light appearance' : 'Switch to dark appearance');
-        }
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#191e1b' : '#f5f3ee');
-      }
-      updateThemeLabel();
-      theme?.addEventListener('click', () => {
-        const mode = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = mode;
-        try { localStorage.setItem('photo-theme', mode); } catch {}
-        updateThemeLabel();
-      });
-    </script>
   </body>
 </html>

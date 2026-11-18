@@ -1,32 +1,36 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { researchItems, researchTypeLabel, researchLinkLabel, type ResearchLink } from '../../data/research';
-import { url } from '../../data/site';
+import AcademicLayout from '../../layouts/AcademicLayout.astro';
+import {researchItems,researchLinkLabel,type ResearchLink} from '../../data/research';
+import {site,url} from '../../data/site';
+const groups=[
+  {title:'Publications',items:researchItems.filter(item=>item.type==='paper')},
+  {title:'Projects',items:researchItems.filter(item=>item.type==='project')},
+].filter(group=>group.items.length>0);
 ---
-
-<Layout title="Research" description="Publications, projects, and public resources." active="research">
-  <header class="page-header">
-    <p class="eyebrow">Academic work</p>
-    <h1>Research</h1>
-    <p>Publications, projects, and public resources.</p>
+<AcademicLayout>
+  <header class="academic-profile">
+    <h1>Xiangtong Nie</h1>
+    <p>I am currently at the University of Chinese Academy of Sciences (UCAS). Previously, I studied Intelligent Science and Technology at Shanghai University.</p>
+    <p class="academic-contact"><a href={`mailto:${site.email}`}>Email</a><span aria-hidden="true">/</span><a href={site.github}>GitHub</a><span aria-hidden="true">/</span><a href={url()}>Personal website</a></p>
   </header>
-
-  <div class="research-introduction"><p class="eyebrow">Research interests</p><p>Artificial intelligence and its applications in industrial settings.</p></div>
-  {researchItems.length > 0 ? (
-    <div class="research-list">
-      {researchItems.map((item) => (
-        <article class="research-item">
-          <p class="research-meta"><time datetime={String(item.year)}>{item.year}</time> · {researchTypeLabel[item.type]}{item.status && ` · ${item.status}`}</p>
-          <h2><a href={url(`research/${item.slug}/`)}>{item.title}</a></h2>
-          {item.authors && <p class="research-authors">{item.authors.join(', ')}</p>}
-          {item.venue && <p class="research-venue">{item.venue}</p>}
-          <p class="research-summary">{item.summary}</p>
-          <div class="research-links">
-            <a href={url(`research/${item.slug}/`)}>Details</a>
-            {Object.entries(item.links).map(([kind, href]) => <a href={href} target="_blank" rel="noreferrer">{researchLinkLabel[kind as ResearchLink]} ↗</a>)}
-          </div>
+  <section class="research-introduction" aria-labelledby="research-heading">
+    <h2 id="research-heading">Research</h2>
+    <p>I am interested in artificial intelligence and its applications in industrial settings.</p>
+  </section>
+  {groups.map(group=><section aria-labelledby={`${group.title.toLowerCase()}-heading`}>
+    <h2 id={`${group.title.toLowerCase()}-heading`}>{group.title}</h2>
+    <ul class="bibliography">
+      {group.items.map(item=><li>
+        <article>
+          <h3><a href={url(`research/${item.slug}/`)}>{item.title}</a></h3>
+          {item.authors&&<p>{item.authors.join(', ')}</p>}
+          <p>{item.venue&&<><em>{item.venue}</em>, </>}{item.year}{item.status&&` · ${item.status}`}</p>
+          {Object.keys(item.links).length>0&&<nav class="resource-links" aria-label={`Resources for ${item.title}`}>
+            {Object.entries(item.links).map(([kind,href])=><a href={href}>{researchLinkLabel[kind as ResearchLink]}</a>)}
+          </nav>}
+          <p class="entry-summary">{item.summary}</p>
         </article>
-      ))}
-    </div>
-  ) : <div class="empty-state"><h2>Publications & projects</h2><p>No public entries yet.</p></div>}
-</Layout>
+      </li>)}
+    </ul>
+  </section>)}
+</AcademicLayout>
