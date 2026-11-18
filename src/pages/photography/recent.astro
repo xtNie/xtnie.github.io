@@ -3,7 +3,7 @@ import PhotoLayout from '../../layouts/PhotoLayout.astro';
 import Photo from '../../components/Photo.astro';
 import Lightbox from '../../components/Lightbox.astro';
 import {recentPhotos} from '../../data/photos';
-const sizes='(max-width: 560px) calc(100vw - 48px), (max-width: 760px) calc((100vw - 72px) / 2), (max-width: 860px) calc((100vw - 124px) / 2), (max-width: 1160px) calc((100vw - 360px) / 2), (max-width: 1440px) calc((100vw - 416px) / 3), 342px';
+const sizes='(max-width: 560px) calc(100vw - 40px), (max-width: 760px) calc((100vw - 64px) / 2), (max-width: 1000px) calc((100vw - 264px) / 2), (max-width: 1160px) calc((100vw - 288px) / 3), 291px';
 ---
 <PhotoLayout title="Recent photographs" section="recent">
   <header class="photo-page-header"><h1>Recent</h1><span class="photo-count">{recentPhotos.length} photographs</span></header>

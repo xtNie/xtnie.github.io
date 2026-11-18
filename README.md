@@ -1,11 +1,11 @@
 # Xiangtong Nie
 
-A personal website for research, writing, and photography, built with Astro. The public interface is in English, with an editorial layout, warm ivory and forest-green palette, large serif typography, and a separate photography gallery.
+A simple English personal blog with writing and photography, built with Astro. The personal pages use a white background, normal system typography, and a single reading column. The research section has its own minimal academic layout and stylesheet.
 
 - Research entries support publications, projects, authors, venues, abstracts, and resource links. No sample research is published.
 - Markdown writing supports drafts. The inherited template post is retained as a draft.
 - Photography includes collection and photograph views, category filters, a keyboard/touch lightbox, and credited sample photographs.
-- Light and dark appearances, responsive layouts, and static GitHub Pages deployment.
+- Responsive layouts and static GitHub Pages deployment.
 
 ## Run locally
 
@@ -21,7 +21,7 @@ pnpm build
 
 ## Add content
 
-See [the content guide](docs/CONTENT.md) for research and writing. Profile details live in `src/data/site.ts`, `src/pages/index.astro`, and `src/pages/about.astro`.
+See [the content guide](docs/CONTENT.md) for research and writing. Personal profile details live in `src/data/site.ts`, `src/pages/index.astro`, and `src/pages/about.astro`. Academic biography details live in `src/pages/research/index.astro`. Research pages use `src/layouts/AcademicLayout.astro` and `src/styles/academic.css` independently of the personal blog.
 
 Keep original photographs in `../photography-originals/`, next to this checkout. Use one folder per collection. Originals are not committed or uploaded by the importer.
 

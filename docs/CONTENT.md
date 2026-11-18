@@ -1,10 +1,10 @@
 # Maintaining the personal website
 
-The site puts research first, writing second, and photography last. Public content should describe real work and verified biographical details. Missing information is omitted; the site does not generate publications, achievements, affiliations, or research interests.
+The personal blog presents writing and photography. A separate research section uses an independent academic layout. Public content should describe real work and verified biographical details. Missing information is omitted; the site does not generate publications, achievements, affiliations, or research interests.
 
 ## Research and projects
 
-Edit `src/data/research.json`. It is initially an empty array because no public research entries have been supplied. The research page displays “No public entries yet.” until real entries are added. No empty project cards or invented publication counts are rendered.
+Edit `src/data/research.json`. It is initially an empty array because no public research entries have been supplied. The research page omits publication and project sections until real entries are added. No empty project cards or invented publication counts are rendered.
 
 Each entry uses the following fields:
 
@@ -19,9 +19,9 @@ Each entry uses the following fields:
 | `summary` | string | A factual description. Separate paragraphs with `\n\n`; HTML and Markdown are not interpreted. |
 | `links` | object | Any of `paper`, `code`, `data`, and `demo`, each containing a full HTTPS URL. An empty object is valid. |
 | `status` | optional string | Use accurate wording, such as “Preprint,” when the distinction matters. Do not imply acceptance or publication before it occurs. |
-| `featured` | optional boolean | Set to `true` to select an item for the home page. |
+| `featured` | optional boolean | Retained for compatibility; the academic page lists all entries. |
 
-Each entry creates `/research/<slug>/`. Research pages are sorted by year, newest first. `featuredResearch` exports up to three explicitly featured entries; if none are selected, it uses the three newest real entries. With an empty file it remains empty.
+Each entry creates `/research/<slug>/`. Publications and projects have separate lists, sorted by year, newest first. Research entries are kept on the academic pages rather than the personal homepage.
 
 Validation runs when the research module is loaded during development or production builds. It rejects duplicate slugs, unsupported types or resource keys, invalid years, blank required fields, and unsafe resource URLs. HTTPS links must not embed credentials. Optional fields should be omitted rather than filled with empty strings or speculative information.
 
