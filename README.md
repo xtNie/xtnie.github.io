@@ -1,6 +1,6 @@
 # Xiangtong Nie
 
-A personal website for research, writing, and photography, built with Astro. The public interface is in English, with a restrained typographic layout and a separate photography gallery.
+A personal website for research, writing, and photography, built with Astro. The public interface is in English, with an editorial layout, warm ivory and forest-green palette, large serif typography, and a separate photography gallery.
 
 - Research entries support publications, projects, authors, venues, abstracts, and resource links. No sample research is published.
 - Markdown writing supports drafts. The inherited template post is retained as a draft.

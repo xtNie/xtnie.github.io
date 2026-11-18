@@ -15,7 +15,7 @@ const {title='Photography',description,section='series',slug}=Astro.props;
         <a href={url('photography/recent/')} aria-current={section==='recent'?'page':undefined}>Recent</a>
       </nav>
       <nav class="photo-series-nav" aria-label="Photo series">
-        {albums.map(album=><a href={url(`series/${album.slug}/`)} aria-current={slug===album.slug?'page':undefined}><span>{album.title}</span><span>{album.photos.length}</span></a>)}
+        {albums.map((album,index)=><a href={url(`series/${album.slug}/`)} aria-current={slug===album.slug?'page':undefined} aria-label={`${album.title}, ${album.photos.length} photographs`}><span class="photo-series-name"><span class="photo-series-order" aria-hidden="true">{String(index+1).padStart(2,'0')}</span><span>{album.title}</span></span><span class="photo-series-count" aria-hidden="true">{album.photos.length}</span></a>)}
       </nav>
     </aside>
     <section class="photo-content" aria-label={title}><slot/></section>

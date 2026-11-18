@@ -6,10 +6,12 @@ import { url } from '../../data/site';
 
 <Layout title="Research" description="Publications, projects, and public resources." active="research">
   <header class="page-header">
+    <p class="eyebrow">Academic work</p>
     <h1>Research</h1>
     <p>Publications, projects, and public resources.</p>
   </header>
 
+  <div class="research-introduction"><p class="eyebrow">Research interests</p><p>Artificial intelligence and its applications in industrial settings.</p></div>
   {researchItems.length > 0 ? (
     <div class="research-list">
       {researchItems.map((item) => (
@@ -26,5 +28,5 @@ import { url } from '../../data/site';
         </article>
       ))}
     </div>
-  ) : <p class="empty-note">No public entries yet.</p>}
+  ) : <div class="empty-state"><h2>Publications & projects</h2><p>No public entries yet.</p></div>}
 </Layout>

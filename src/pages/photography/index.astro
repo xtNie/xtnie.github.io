@@ -5,7 +5,7 @@ import Lightbox from '../../components/Lightbox.astro';
 import {albums,allPhotos,coverOf} from '../../data/photos';
 import {url,photoUrl} from '../../data/site';
 const categories=[...new Set(albums.map(album=>album.category))];
-const sizes='(max-width: 560px) calc(100vw - 40px), (max-width: 860px) calc((100vw - 68px) / 2), (max-width: 1160px) calc((100vw - 340px) / 2), 350px';
+const sizes='(max-width: 560px) calc(100vw - 48px), (max-width: 760px) calc((100vw - 72px) / 2), (max-width: 860px) calc((100vw - 124px) / 2), (max-width: 1160px) calc((100vw - 360px) / 2), (max-width: 1440px) calc((100vw - 416px) / 3), 342px';
 ---
 <PhotoLayout>
   <header class="photo-page-header">
