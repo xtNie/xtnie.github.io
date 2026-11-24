@@ -1,5 +1,5 @@
 ---
 import { url } from '../data/site';
 export function getStaticPaths() { return ['blog', 'record', 'life', 'search', 'tags', 'projects'].map(legacy => ({ params: { legacy } })); }
-return Astro.redirect(url(Astro.params.legacy === 'projects' ? 'research/' : 'writing/'));
+return Astro.redirect(url(Astro.params.legacy === 'projects' ? '' : 'writing/'));
 ---

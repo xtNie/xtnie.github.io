@@ -16,7 +16,7 @@ const {item}=Astro.props;
     </>}
   </Fragment>
   <article class="academic-detail">
-    <p class="academic-back"><a href={url('research/')}>Xiangtong Nie / Research</a></p>
+    <p class="academic-back"><a href={url()}>Xiangtong Nie / Research</a></p>
     <header>
       <h1>{item.title}</h1>
       {item.authors&&<p class="detail-authors">{item.authors.join(', ')}</p>}

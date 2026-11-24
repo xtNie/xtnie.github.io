@@ -5,7 +5,7 @@ interface Props { title?: string; description?: string; active?: string; wide?: 
 const { title, description = site.description, active = 'home', wide = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const links = [
-  { key: 'research', label: 'Research', path: 'research/' },
+  { key: 'research', label: 'Research', path: '' },
   { key: 'writing', label: 'Writing', path: 'writing/' },
   { key: 'photography', label: 'Photography', path: 'photography/' },
   { key: 'about', label: 'About', path: 'about/' },
@@ -31,7 +31,7 @@ const links = [
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class:list={['site-header', { wide }]}>
-      <a class="wordmark" href={url()} aria-label="Sutton — home">Sutton</a>
+      <a class="wordmark" href={url('personal/')} aria-label="Sutton — personal home">Sutton</a>
       <nav class="main-nav" aria-label="Main navigation">
         {links.map(link => <a href={url(link.path)} aria-current={active === link.key ? 'page' : undefined}>{link.label}</a>)}
       </nav>

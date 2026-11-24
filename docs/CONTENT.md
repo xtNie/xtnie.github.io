@@ -1,6 +1,6 @@
 # Maintaining the personal website
 
-The personal blog presents writing and photography. A separate research section uses an independent academic layout. Public content should describe real work and verified biographical details. Missing information is omitted; the site does not generate publications, achievements, affiliations, or research interests.
+The root homepage `/` uses the independent academic layout. The personal blog at `/personal/` presents writing and photography. The former `/research/` address redirects to `/`; research detail routes stay at `/research/<slug>/`. Public content should describe real work and verified biographical details. Missing information is omitted; the site does not generate publications, achievements, affiliations, or research interests.
 
 ## Research and projects
 
@@ -50,7 +50,7 @@ Use `draft: true` for unfinished essays that may be stored in the repository. It
 
 ## Photographs
 
-See [PHOTOS.md](PHOTOS.md) for the local import workflow, manifest format, and optional future R2 / AfterFrame integration. Photographs live in the dedicated gallery. The academic home page uses only a small preview at the end, with any sample photographs explicitly credited.
+See [PHOTOS.md](PHOTOS.md) for the local import workflow, manifest format, and optional future R2 / AfterFrame integration. Photographs live in the dedicated gallery. The personal home page includes a small preview, with any sample photographs explicitly credited. The academic homepage does not include photography.
 
 ## Check an update
 
