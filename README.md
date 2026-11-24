@@ -1,6 +1,6 @@
 # Xiangtong Nie
 
-A simple English personal blog with writing and photography, built with Astro. The personal pages use a white background, normal system typography, and a single reading column. The research section has its own minimal academic layout and stylesheet.
+A simple English personal blog with writing and photography, built with Astro. The personal pages use a white background, normal system typography, and a single reading column. The academic homepage at `/` has its own minimal academic layout and stylesheet. The personal blog is at `/personal/`; the former `/research/` address redirects to `/`.
 
 - Research entries support publications, projects, authors, venues, abstracts, and resource links. No sample research is published.
 - Markdown writing supports drafts. The inherited template post is retained as a draft.
@@ -21,7 +21,7 @@ pnpm build
 
 ## Add content
 
-See [the content guide](docs/CONTENT.md) for research and writing. Personal profile details live in `src/data/site.ts`, `src/pages/index.astro`, and `src/pages/about.astro`. Academic biography details live in `src/pages/research/index.astro`. Research pages use `src/layouts/AcademicLayout.astro` and `src/styles/academic.css` independently of the personal blog.
+See [the content guide](docs/CONTENT.md) for research and writing. Personal profile details live in `src/data/site.ts`, `src/pages/personal.astro`, and `src/pages/about.astro`. Academic biography details live in `src/pages/index.astro`. Research pages use `src/layouts/AcademicLayout.astro` and `src/styles/academic.css` independently of the personal blog.
 
 Keep original photographs in `../photography-originals/`, next to this checkout. Use one folder per collection. Originals are not committed or uploaded by the importer.
 

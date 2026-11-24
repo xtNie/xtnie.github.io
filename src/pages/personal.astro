@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, url, photoUrl } from '../data/site';
+import { posts } from '../data/posts';
+import { albums, coverOf } from '../data/photos';
+const selectedAlbums = albums.slice(0, 3);
+---
+<Layout>
+  <header class="page-header"><h1>{site.name}</h1></header>
+  <div class="prose home-intro">
+    <p>I also go by Sutton. I enjoy photography and music, and I am learning to play the bass.</p>
+    <p>You can find my academic background and research on my <a href={url()}>research page</a>.</p>
+  </div>
+  {posts.length > 0 && <section class="home-section" aria-labelledby="writing-heading">
+    <div class="section-heading"><h2 id="writing-heading">Writing</h2><a href={url('writing/')}>All posts</a></div>
+    <div class="text-list">
+      {posts.slice(0, 5).map(post => <a class="article-row" href={url(`p/${post.slug}/`)}>{post.date && <time datetime={post.date.slice(0, 10)}>{post.date.slice(0, 10)}</time>}<h3>{post.title}</h3></a>)}
+    </div>
+  </section>}
+  {selectedAlbums.length > 0 && <section class="home-section" aria-labelledby="photography-heading">
+    <div class="section-heading"><h2 id="photography-heading">Photography</h2><a href={url('photography/')}>All photos</a></div>
+    <div class="photo-preview-grid">
+      {selectedAlbums.map(album => {
+        const photo = coverOf(album);
+        const thumb = photo.variants?.[0] || photo;
+        return <a href={url(`series/${album.slug}/`)} class="photo-preview-item">
+          <div class="photo-preview-image"><img src={photoUrl(thumb.src)} alt={photo.alt} width={thumb.width} height={thumb.height} loading="lazy" decoding="async" /></div>
+          <span>{album.title}</span>
+        </a>;
+      })}
+    </div>
+    {selectedAlbums.some(album => album.demo) && <p class="sample-note">The gallery currently uses sample photographs. Credits are included with each image.</p>}
+  </section>}
+</Layout>
